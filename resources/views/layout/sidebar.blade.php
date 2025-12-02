@@ -5,7 +5,7 @@
         <a href="/dashboard" class="hover:bg-gray-700 p-2 rounded">Dashboard</a>
         <a href="/ganhos" class="hover:bg-gray-700 p-2 rounded">Ganhos</a>
         <a href="/gastos" class="hover:bg-gray-700 p-2 rounded">Gastos</a>
-        <a href="/categorias" class="hover:bg-gray-700 p-2 rounded">Categorias</a>
+    
     </nav>
 
     <div class="mt-auto pt-6">

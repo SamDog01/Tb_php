@@ -18,6 +18,10 @@ return new class extends Migration
             $table->date('data');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
+            $table->unsignedBigInteger('category_id')->nullable();
+            
+            $table->foreign('category_id')->references('id')->on('categories')->nullOnDelete();
+
            
         });
     }

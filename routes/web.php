@@ -27,10 +27,13 @@ Route::middleware('auth')->group(function () {
     Route::post('/ganhos', [EarningsController::class, 'store'])->name('earnings.store');
     Route::get('/ganhos/{id}/edit', [EarningsController::class, 'edit'])->name('earnings.edit');
     Route::put('/ganhos/{id}', [EarningsController::class, 'update'])->name('earnings.update');
+    Route::get('/resumo', [\App\Http\Controllers\SummaryController::class, 'index'])->name('summary.index');
 
-    Route::get('/expenses', [ExpensesController::class, 'index'])->name('expenses.index');
-    Route::get('/expenses/create', [ExpensesController::class, 'create'])->name('expenses.create');
-    Route::post('/expenses', [ExpensesController::class, 'store'])->name('expenses.store');
-    Route::get('/expenses/{id}/edit', [ExpensesController::class, 'edit'])->name('expenses.edit');
-    Route::put('/expenses/{id}', [ExpensesController::class, 'update'])->name('expenses.update');
+    Route::get('/gastos', [ExpensesController::class, 'index'])->name('expenses.index');
+    Route::get('/gastos/create', [ExpensesController::class, 'create'])->name('expenses.create');
+    Route::post('/gastos', [ExpensesController::class, 'store'])->name('expenses.store');
+    Route::get('/gastos/{id}/edit', [ExpensesController::class, 'edit'])->name('expenses.edit');
+    Route::put('/gastos/{id}', [ExpensesController::class, 'update'])->name('expenses.update');
+    Route::get('/dashboard/finance', [DashboardController::class, 'financas'])->name('dashboard.financas');
+
 });

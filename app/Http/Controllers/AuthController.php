@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    // LOGIN
+
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -25,7 +25,7 @@ class AuthController extends Controller
         return back()->withErrors(['email' => 'Credenciais incorretas.']);
     }
 
-    // REGISTRO
+
     public function register(Request $request)
     {
         $request->validate([
@@ -52,6 +52,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/logout.page');
+        return redirect('/logout');
     }
 }

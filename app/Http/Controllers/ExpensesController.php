@@ -40,7 +40,7 @@ class ExpensesController extends Controller
 
     public function edit($id)
     {
-        $expenses = Expenses::where('user_id', auth()->id())->findOrFail($id);
+        $expense = Expenses::where('user_id', auth()->id())->findOrFail($id);
 
         return view('expenses.edit', compact('expense'));
     }
@@ -63,4 +63,8 @@ class ExpensesController extends Controller
 
         return redirect()->route('expenses.index')->with('success', 'Expense updated!');
     }
+        public function category() {
+        return $this->belongsTo(Category::class);
+        }
+
 }
