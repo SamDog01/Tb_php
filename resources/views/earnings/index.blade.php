@@ -4,7 +4,7 @@
 
 @section('content')
 
-<a href="/ganhos/create" 
+<a href="{{ route('earnings.create') }}"
    class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 mb-4 inline-block">
    Novo Ganho
 </a>
@@ -27,7 +27,7 @@
                     <td class="p-3 text-green-600 font-semibold">R$ {{ $g->valor }}</td>
                     <td class="p-3">{{ $g->data }}</td>
                     <td class="p-3">
-                        <a href="/ganhos/{{ $g->id }}/edit" class="text-blue-600">Editar</a>
+                       <a href="{{ route('earnings.edit', $g->id) }}" class="text-blue-600">Editar</a>
                     </td>
                 </tr>
             @endforeach

@@ -1,21 +1,36 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EarningsController;
+use App\Http\Controllers\ExpensesController;
 
-route ::get('/', function () { return view('auth.login'); });
+Route::get('/', function () {
+    return view('auth.login');
+});
 
-route ::get('/login', function () { return view('auth.login'); });
+// Login/Register
+Route::get('/login', fn() => view('auth.login'))->name('login.page');
+Route::get('/register', fn() => view('auth.register'))->name('register.page');
 
-route ::get('/register', function () { return view('auth.register'); });
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-route ::get ('/layout', function () { return view('layout.app'); });
 
-Route::get('/dashboard', function () { return view('dashboard.index'); });
+Route::middleware('auth')->group(function () {
 
-Route::get('/ganhos', function () { return view('ganhos.index'); });
+    Route::get('/dashboard', fn() => view('dashboard.index'));
 
-Route::get('/gastos', function () { return view('gastos.index'); });
+    Route::get('/ganhos', [EarningsController::class, 'index'])->name('earnings.index');
+    Route::get('/ganhos/create', [EarningsController::class, 'create'])->name('earnings.create');
+    Route::post('/ganhos', [EarningsController::class, 'store'])->name('earnings.store');
+    Route::get('/ganhos/{id}/edit', [EarningsController::class, 'edit'])->name('earnings.edit');
+    Route::put('/ganhos/{id}', [EarningsController::class, 'update'])->name('earnings.update');
 
-Route::get('/categorias', function () { return view('categorias.index'); });
+    Route::get('/expenses', [ExpensesController::class, 'index'])->name('expenses.index');
+    Route::get('/expenses/create', [ExpensesController::class, 'create'])->name('expenses.create');
+    Route::post('/expenses', [ExpensesController::class, 'store'])->name('expenses.store');
+    Route::get('/expenses/{id}/edit', [ExpensesController::class, 'edit'])->name('expenses.edit');
+    Route::put('/expenses/{id}', [ExpensesController::class, 'update'])->name('expenses.update');
+});

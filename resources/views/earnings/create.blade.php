@@ -3,7 +3,7 @@
 @section('title', 'Novo Ganho')
 
 @section('content')
-<form action="/ganhos" method="POST" class="bg-white p-6 rounded-lg shadow max-w-lg">
+<form action="{{ route('earnings.store') }}" method="POST" class="bg-white p-6 rounded-lg shadow max-w-lg">
     @csrf
 
     <label class="block mb-2">Descrição</label>
@@ -18,6 +18,5 @@
     <button class="w-full bg-green-600 text-white p-3 rounded hover:bg-green-700">
         Salvar
     </button>
-
 </form>
 @endsection
